@@ -1,14 +1,26 @@
-import { Link, Form } from 'react-router-dom'
+import { Link, Form, useActionData, ActionFunctionArgs } from 'react-router-dom'
+import { ErrorMessage } from '../components/ErrorMessage'
 
+export async function action({request} : ActionFunctionArgs){
+  const data = Object.fromEntries(await request.formData())
+ 
+  let error = ''
+  if(Object.values(data).includes('')){
+    error = 'All fields are required'
+  }
 
-export async function action(){
-  console.log('from action')
+  if(error){
+    return error
+  }
 
   return {}
 }
 
 
 export const NewProduct = () => {
+
+  const error = useActionData() as string;
+
   return (
     <>
 
@@ -18,6 +30,10 @@ export const NewProduct = () => {
 
 
       </div>
+
+      {
+        error && <ErrorMessage>{error}</ErrorMessage>
+      }
 
       <Form
         className="mt-10"
