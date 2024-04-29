@@ -20,7 +20,7 @@ export const Products = () => {
     <>
       <div className='flex justify-between '>
         <h2 className=' text-4xl font-semibold text-slate-500'>Products</h2>
-        <Link to="products/new" className=' rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500'>Add Product</Link>
+        <Link to="products/new" className=' rounded-lg bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500'>Add Product</Link>
       </div>
       <div className="p-2">
         <table className="w-full mt-5 table-auto">
