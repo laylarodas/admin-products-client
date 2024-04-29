@@ -2,6 +2,7 @@ import { Link, Form, useActionData, ActionFunctionArgs, redirect, LoaderFunction
 import { ErrorMessage } from '../components/ErrorMessage'
 import { updateProduct, getProductById } from '../services/ProductService'
 import { Product } from '../types'
+import { ProductForm } from '../components/ProductForm'
 
 
 
@@ -69,34 +70,7 @@ export const EditProduct = () => {
         method='POST'
       >
 
-        <div className="mb-4">
-          <label
-            className="text-gray-800"
-            htmlFor="name"
-          >Product Name:</label>
-          <input
-            id="name"
-            type="text"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Product name"
-            name="name"
-            defaultValue={product.name}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="text-gray-800"
-            htmlFor="price"
-          >Price:</label>
-          <input
-            id="price"
-            type="number"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Product price. ex. 200, 300"
-            name="price"
-            defaultValue={product.price}
-          />
-        </div>
+        <ProductForm product={product} />
 
         <div className="mb-4">
           <label
@@ -117,7 +91,7 @@ export const EditProduct = () => {
         <input
           type="submit"
           className="mt-5  bg-indigo-600 py-2 px-8 text-white font-bold text-lg cursor-pointer rounded hover:bg-indigo-500"
-          value="Register Product"
+          value="Save Product"
         />
       </Form>
     </>
