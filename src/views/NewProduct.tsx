@@ -3,18 +3,21 @@ import { ErrorMessage } from '../components/ErrorMessage'
 import { addProduct } from '../services/ProductService'
 
 export async function action({request} : ActionFunctionArgs){
-  const data = Object.fromEntries(await request.formData())
+
+  const data = Object.fromEntries(await request.formData());
+
  
   let error = ''
   if(Object.values(data).includes('')){
     error = 'All fields are required'
   }
 
-  if(error){
+  if(error.length){
     return error
   }
 
   addProduct(data)
+  
   return {}
 }
 
