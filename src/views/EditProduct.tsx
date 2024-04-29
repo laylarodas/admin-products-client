@@ -39,6 +39,11 @@ export async function action({ request, params }: ActionFunctionArgs) {
 
 }
 
+const availabilityOptions = [
+  { name: 'Available', value: true },
+  { name: 'Not Available', value: false }
+]
+
 
 export const EditProduct = () => {
 
@@ -91,6 +96,23 @@ export const EditProduct = () => {
             name="price"
             defaultValue={product.price}
           />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="text-gray-800"
+            htmlFor="availability"
+          >Availability:</label>
+          <select
+            id="availability"
+            className="mt-2 block w-full p-3 bg-gray-50"
+            name="availability"
+            defaultValue={product?.availability.toString()}
+          >
+            {availabilityOptions.map(option => (
+              <option key={option.name} value={option.value.toString()}>{option.name}</option>
+            ))}
+          </select>
         </div>
         <input
           type="submit"
